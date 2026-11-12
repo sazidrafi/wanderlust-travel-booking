@@ -63,7 +63,7 @@ const Navbar = () => {
               <li>
                 <Link href="/profile">
                   <Avatar>
-                    <Avatar.Image alt={user.name} src={user.image} />
+                    <Avatar.Image  alt={user.name} src={user.image} />
                     <Avatar.Fallback>
                       {user.name?.slice(0, 2).toUpperCase()}
                     </Avatar.Fallback>
