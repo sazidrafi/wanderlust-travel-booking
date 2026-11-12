@@ -14,6 +14,7 @@ import {
 import Link from "next/link";
 import { EditModal } from "@/components/EditModal";
 import DeleteModal from "@/components/DeleteModal";
+import BookingCard from "@/components/BookingCard";
 
 const DestinationDetailsPage = async ({ params }) => {
   const { id } = await params;
@@ -107,59 +108,7 @@ const DestinationDetailsPage = async ({ params }) => {
           </div>
 
           {/* Booking Card */}
-          <aside>
-            <div className="border border-default-200 shadow-md p-5 md:p-6 space-y-6 lg:sticky lg:top-24">
-              {/* Price */}
-              <div>
-                <p className="text-default-500 text-sm">Starting from</p>
-
-                <h2 className="text-4xl font-semibold text-cyan-600">
-                  ${price}
-                </h2>
-
-                <p className="text-default-500 text-sm">per person</p>
-              </div>
-
-              {/* Departure Date */}
-              <div className="space-y-4">
-                <input
-                  type="text"
-                  value={formattedDate}
-                  readOnly
-                  className="w-full border border-default-200 bg-default-50 px-4 py-3 outline-none text-default-800"
-                  aria-label="Departure date"
-                />
-
-                <div className="border-t border-default-200" />
-
-                <Link
-                  href={`/booking/${_id}`}
-                  className="flex items-center justify-center gap-3 w-full bg-cyan-600 hover:bg-cyan-700 text-white font-medium py-4 transition-colors"
-                >
-                  Book Now
-                  <FaArrowRight />
-                </Link>
-              </div>
-
-              {/* Booking Benefits */}
-              <div className="space-y-3 text-sm text-default-500">
-                <p className="flex items-center gap-3">
-                  <FaCheck className="text-success" />
-                  Easy booking process
-                </p>
-
-                <p className="flex items-center gap-3">
-                  <FaCheck className="text-success" />
-                  Secure payment
-                </p>
-
-                <p className="flex items-center gap-3">
-                  <FaCheck className="text-success" />
-                  Customer support
-                </p>
-              </div>
-            </div>
-          </aside>
+          <BookingCard destination={destination}/>
         </div>
       </section>
     </div>
