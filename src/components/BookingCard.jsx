@@ -63,7 +63,7 @@ const BookingCard = ({ destination }) => {
 
           {/* Departure Date */}
           <div className="space-y-4">
-            <DatePicker className="w-72" name="date" onChange={setValue}>
+            <DatePicker className="w-full" name="date" onChange={setValue}>
               <Label>Date</Label>
               <DateField.Group fullWidth>
                 <DateField.Input>
