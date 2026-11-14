@@ -15,7 +15,7 @@ const Navbar = () => {
     refetch, //refetch the session
   } = authClient.useSession();
   const user = session?.user;
-  console.log(user);
+  // console.log(user);
   return (
     <nav className="sticky top-0 z-40 w-full border-separator  backdrop-blur-lg">
       <header className="flex h-16 items-center justify-between px-6">
@@ -33,7 +33,7 @@ const Navbar = () => {
             <Link href="/destinations">Destinations</Link>
           </li>
           <li>
-            <Link href="/mybookings">My Bookings</Link>
+            <Link href="/my-bookings">My Bookings</Link>
           </li>
           <li>
             <Link href="/add-destination">Add Destination</Link>
