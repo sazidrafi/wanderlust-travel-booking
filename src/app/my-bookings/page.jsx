@@ -8,9 +8,17 @@ const MyBookingsPage = async () => {
     headers: await headers(), // you need to pass the headers object.
   });
 
+  const { token } = await auth.api.getToken({
+    headers: await headers(),
+  });
+
   const userID = session?.user?.id;
 
-  const res = await fetch(`http://localhost:5000/booking/${userID}`);
+  const res = await fetch(`http://localhost:5000/booking/${userID}`, {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
   const data = await res.json();
   //   console.log(data);
 
@@ -26,8 +34,10 @@ const MyBookingsPage = async () => {
         <div className="text-center m-9 space-y-9 mt-12">
           <h1 className="text-5xl text-red-500">
             You have not booked any tour plan yet.
-                  </h1>
-          <Link href="/destinations"><Button className="text-3xl p-6">Book Now</Button></Link>
+          </h1>
+          <Link href="/destinations">
+            <Button className="text-3xl p-6">Book Now</Button>
+          </Link>
         </div>
       )}
       {data.map((dest, idx) => (

@@ -5,20 +5,23 @@ import { MdDeleteForever } from "react-icons/md";
 import { useRouter } from "next/navigation";
 
 export function BookingCancelAlert({ bookingId }) {
-    const router = useRouter();
-//   console.log("bookingid ", bookingId);
+  const router = useRouter();
+  //   console.log("bookingid ", bookingId);
+
   const handCancelBooking = async () => {
+    const { data: tokenData } = await authClient.token();
+
     const res = await fetch(`http://localhost:5000/booking/${bookingId}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",
+        authorization: `Bearer ${tokenData?.token}`,
       },
     });
     const data = await res.json();
-      if(data.acknowledged){
-        router.refresh();
-      }
-    
+    if (data.acknowledged) {
+      router.refresh();
+    }
   };
   return (
     <AlertDialog>
