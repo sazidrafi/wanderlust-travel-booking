@@ -15,14 +15,25 @@ import Link from "next/link";
 import { EditModal } from "@/components/EditModal";
 import DeleteModal from "@/components/DeleteModal";
 import BookingCard from "@/components/BookingCard";
+import { headers } from "next/headers";
+import { auth } from "@/lib/auth";
 
 const DestinationDetailsPage = async ({ params }) => {
   const { id } = await params;
   //   console.log(id);
 
-  const res = await fetch(`http://localhost:5000/destination/${id}`);
+  const {token} = await auth
+    .api.getToken({
+    headers: await headers()
+  })
+// console.log(token);
+  const res = await fetch(`http://localhost:5000/destination/${id}`, {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
   const destination = await res.json();
-  //   console.log(destination);
+  // console.log(destination);
   const {
     _id,
     destinationName,
@@ -108,7 +119,7 @@ const DestinationDetailsPage = async ({ params }) => {
           </div>
 
           {/* Booking Card */}
-          <BookingCard destination={destination}/>
+          <BookingCard destination={destination} />
         </div>
       </section>
     </div>

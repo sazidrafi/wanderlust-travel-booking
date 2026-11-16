@@ -25,7 +25,7 @@ const MyBookingsPage = async () => {
       {data.length === 0 && (
         <div className="text-center m-9 space-y-9 mt-12">
           <h1 className="text-5xl text-red-500">
-            You haven't booked any tour plan yet.
+            You have not booked any tour plan yet.
                   </h1>
           <Link href="/destinations"><Button className="text-3xl p-6">Book Now</Button></Link>
         </div>
