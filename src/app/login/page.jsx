@@ -139,7 +139,7 @@ const LoginPage = () => {
         </Button>
 
         <div className="flex text-lg">
-          <p>Don't have an account? </p>{" "}
+          <p>Dont have an account? </p>{" "}
           <Link href="/signup" className="text-blue-500">
             Sign Up
           </Link>
