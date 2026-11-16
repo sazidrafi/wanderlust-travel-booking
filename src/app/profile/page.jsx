@@ -4,6 +4,7 @@ import { authClient } from "@/lib/auth-client";
 import { Button } from "@heroui/react";
 import { Avatar, Card } from "@heroui/react";
 import Image from "next/image";
+import { redirect } from "next/navigation";
 
 const ProfilePage = () => {
   const {
@@ -17,6 +18,7 @@ const ProfilePage = () => {
 
   const handLogout = async () => {
     await authClient.signOut();
+    redirect("/")
   };
   return (
     <div className="container mx-auto m-10">

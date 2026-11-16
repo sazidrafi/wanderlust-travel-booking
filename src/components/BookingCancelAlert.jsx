@@ -3,6 +3,7 @@
 import { AlertDialog, Button } from "@heroui/react";
 import { MdDeleteForever } from "react-icons/md";
 import { useRouter } from "next/navigation";
+import { authClient } from "@/lib/auth-client";
 
 export function BookingCancelAlert({ bookingId }) {
   const router = useRouter();

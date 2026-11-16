@@ -39,17 +39,29 @@ const BookingCard = ({ destination }) => {
 
     // console.log(bookingData, "booking data");
     // send booking data to database collection
-    const res = await fetch("http://localhost:5000/booking", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${tokenData?.token}`,
-      },
-      body: JSON.stringify(bookingData),
-    });
+    if (value) {
+      const bookingDate = new Date(value)
+      const presentDate = new Date()
+      if(bookingDate < presentDate){
+        alert('Booking date must be ahead from today!!!')
+      }
+      else {
+        const res = await fetch("http://localhost:5000/booking", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${tokenData?.token}`,
+        },
+        body: JSON.stringify(bookingData),
+      });
 
-    const data = await res.json();
-    if (data.acknowledged) alert("Booking successful");
+      const data = await res.json();
+      if (data.acknowledged) alert("Booking successful");
+      }
+      
+    } else {
+      alert("Please Select a date");
+    }
   };
   return (
     <div>
