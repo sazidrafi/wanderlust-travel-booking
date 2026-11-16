@@ -1,5 +1,7 @@
+"use client";
 import { Separator } from "@heroui/react";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 const Banner = () => {
   return (
@@ -16,13 +18,18 @@ const Banner = () => {
 
         <div className="flex gap-5">
           <Link href="/destinations">
-          <button className="uppercase bg-cyan-500 px-5 py-3 cursor-pointer">
-            Explore Now
-          </button></Link>
-
-          <button className="uppercase px-5 py-3 bg-white/50 cursor-pointer">
+            <button className="uppercase bg-cyan-500 px-5 py-3 cursor-pointer">
+              Explore Now
+            </button>
+          </Link>
+          <Link href="/my-bookings">
+            <button className="uppercase bg-gray-400 px-5 py-3 cursor-pointer">
+              View Destination
+            </button>
+          </Link>
+          {/* <button className="uppercase px-5 py-3 bg-white/50 cursor-pointer">
             View Destination
-          </button>
+          </button> */}
         </div>
       </div>
 
