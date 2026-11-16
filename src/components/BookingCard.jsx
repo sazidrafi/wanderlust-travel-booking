@@ -33,18 +33,23 @@ const BookingCard = ({ destination }) => {
       destinationImage: destination.imageUrl,
       destinationCountry: destination.country,
     };
+
+    const { data: tokenData } = await authClient.token();
+    // console.log(tokenData.token)
+
     // console.log(bookingData, "booking data");
     // send booking data to database collection
     const res = await fetch("http://localhost:5000/booking", {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        authorization: `Bearer ${tokenData?.token}`,
       },
       body: JSON.stringify(bookingData),
     });
 
     const data = await res.json();
-    if(data.acknowledged) alert('Booking successful')
+    if (data.acknowledged) alert("Booking successful");
   };
   return (
     <div>
